@@ -1,0 +1,1 @@
+// Legacy MainActivity removed. Use com.fawzan.daily_planner.MainActivity instead.
