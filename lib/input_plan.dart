@@ -17,7 +17,6 @@ class _InputPlanState extends State<InputPlan> {
   final TextEditingController finishTimeController = TextEditingController();
   String selectedWeekday = 'Monday';
 
-  // Fungsi untuk memunculkan jam
   Future<void> _selectTime(TextEditingController controller) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
@@ -25,7 +24,6 @@ class _InputPlanState extends State<InputPlan> {
     );
     if (picked != null) {
       setState(() {
-        // Format jam menjadi HH:mm (contoh: 08:30)
         final String formattedTime =
             '${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}';
         controller.text = formattedTime;
@@ -44,12 +42,10 @@ class _InputPlanState extends State<InputPlan> {
       'Saturday',
       'Sunday',
     ];
-    // Jika widget memberikan initialWeekday, gunakan itu
     if (widget.initialWeekday != null && widget.initialWeekday!.isNotEmpty) {
       selectedWeekday = widget.initialWeekday!;
     } else {
-      // Default: hari ini
-      final today = DateTime.now().weekday; // 1 = Mon
+      final today = DateTime.now().weekday;
       selectedWeekday = weekdays[(today - 1) % 7];
     }
     return Scaffold(
